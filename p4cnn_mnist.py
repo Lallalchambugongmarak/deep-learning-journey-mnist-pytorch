@@ -1,3 +1,6 @@
+# Day 4: CNN on MNIST
+# Final Accuracy: 99.09% after 5 epochs
+# Beats Day 3 Linear: 92.26% by +6.83%
 epochs = 5
 for epoch in range(epochs):
     model.train()
