@@ -1,0 +1,27 @@
+import torch
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+import torch.nn as nn
+import torch.nn.functional as F
+
+# Day 7 upgrade: Add augmentation to training data only
+train_transform = transforms.Compose([
+    transforms.RandomRotation(10),
+    transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),
+    transforms.ToTensor(), 
+    transforms.Normalize((0.1307,), (0.3081,))
+])
+
+test_transform = transforms.Compose([
+    transforms.ToTensor(), 
+    transforms.Normalize((0.1307,), (0.3081,))
+])
+
+train_loader = DataLoader(
+    datasets.MNIST('./data', train=True, download=True, transform=train_transform), 
+    batch_size=64, shuffle=True
+)
+test_loader = DataLoader(
+    datasets.MNIST('./data', train=False, transform=test_transform), 
+    batch_size=1000, shuffle=False
+)
