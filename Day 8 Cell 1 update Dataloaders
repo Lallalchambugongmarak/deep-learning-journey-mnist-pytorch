@@ -1,0 +1,8 @@
+train_loader = DataLoader(
+    datasets.CIFAR10('./data', train=True, download=True, transform=train_transform),
+    batch_size=128, shuffle=True
+)
+test_loader = DataLoader(
+    datasets.CIFAR10('./data', train=False, transform=test_transform),
+    batch_size=1000, shuffle=False
+)
