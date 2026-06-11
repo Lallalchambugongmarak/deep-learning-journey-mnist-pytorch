@@ -1,0 +1,4 @@
+for param_group in optimizer.param_groups:
+    param_group['lr'] = 0.01
+
+print(f"LR reset to: {optimizer.param_groups[0]['lr']}")
